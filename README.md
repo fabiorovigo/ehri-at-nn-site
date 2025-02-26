@@ -1,21 +1,11 @@
-Skeleton for EHRI National Node websites
-========================================
+EHRI-AT National Node website
+=============================
 
-This is a work-in-progress example EHRI National Node theme, multilingual for English and Welsh
-(apologies to Welsh speakers for the incorrect translations.)
-
-To adapt this theme, fork the repository and change:
-
-- things relating to the languages in `config.yaml`
-- the equivalent translations in `i18n/cy.yaml`
-- files in the content directory ending with `.cy.md`
-
-See the [theme README](https://github.com/EHRI/ehri-nn-hugo-theme) for more info on content types and shortcodes
-as they become available.
+Hugo-based static site for [EHRI Austria](https://www.ehri.at/) based on the [EHRI NN theme](https://github.com/EHRI/ehri-nn-hugo-theme).
 
 ---
 
-## Running
+## Building and Running the site locally
 
 Install Hugo version 0.129.0 or later, as per the instructions [here](https://gohugo.io/installation/): .
 
@@ -38,6 +28,20 @@ say, view it on Github pages, with the included Github Action. To test this loca
     hugo server --baseURL localhost:1313/test
 
 The site will be available at that location with the base path `/test` and you can check everything works correctly.
+
+## Deploying the site
+
+To build the site for deployment, it is necessary to:
+
+ - ensure the `baseURL` in `config.yaml` is correct for the deployment location (e.g. `https://www.ehri.at/`), including a trailing slash
+ - set the environment variable `HUGO_ENV` to `production` to ensure the correct settings are used
+
+For example:
+
+    export HUGO_ENV="production"
+    hugo --minify --cleanDestinationDir
+
+The site will be built in the `public` directory, which can be copied to the deployment location.
 
 ## Updating the theme
 
